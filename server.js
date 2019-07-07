@@ -10,7 +10,11 @@ init = config => {
 
   server.post("/add", (req, res) => {
     const { secret, source } = req.params;
-    if (secret !== undefined && secret === config.secret) {
+    if (
+      secret !== undefined &&
+      secret === config.secret &&
+      source !== undefined
+    ) {
       echo.addUrl(source);
       res.send("success");
     }
