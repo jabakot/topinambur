@@ -9,9 +9,9 @@ init = config => {
   });
 
   server.post("/add", (req, res) => {
-    const { secret } = req.params;
+    const { secret, source } = req.params;
     if (secret !== undefined && secret === config.secret) {
-      echo.addUrl(req.ip);
+      echo.addUrl(source);
       res.send("success");
     }
     res.send("error");
