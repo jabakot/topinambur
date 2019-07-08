@@ -10,7 +10,7 @@ init = config => {
   });
 
   server.post("/add", (req, res) => {
-    const { secret, source } = req.params;
+    const { secret, source } = req.body;
     if (
       secret !== undefined &&
       secret === config.secret &&

@@ -22,10 +22,10 @@ const stop = () => clearInterval(stopJob);
 
 const addUrl = val => {
   if (Array.isArray(val)) {
-    valforEach(v => toPing.push(v));
+    val.forEach(v => toPing.push(v));
   } else if (typeof val === "string") {
-    toPing.push(v);
-    db.add(v);
+    toPing.push(val);
+    db.add(val);
   }
 };
 
