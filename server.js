@@ -23,9 +23,9 @@ init = config => {
   });
 
   server.get("/targets", (req, res) => {
-    const { secret, user } = req.params;
+    const { secret, user } = req.query;
     if (user === "admin" && secret === config.secret) {
-      res.send(db.get());
+      res.send(db.read());
       return;
     }
     res.send("targets?");
