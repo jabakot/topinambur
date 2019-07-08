@@ -4,18 +4,21 @@ const db = require("./db");
 let toPing = [];
 let stopJob = undefined;
 
-const job = () => toPing.forEach(v => fetch(url).then());
+const job = () =>
+  toPing.forEach(v =>
+    fetch(url)
+      .then()
+      .catch(console.error)
+  );
 
 const toMs = mins => mins * 60000;
 
 const start = config => {
   toPing = db.read();
-  stopJob = setInterval(job, toMs(10));
+  stopJob = setInterval(job, toMs(3));
 };
 
 const stop = () => clearInterval(stopJob);
-
-const add = str => {};
 
 const addUrl = val => {
   if (Array.isArray(val)) {

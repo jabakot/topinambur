@@ -2,6 +2,7 @@ const server = require("fastify")({
   logger: false
 });
 const echo = require("./echo");
+const db = require("./db");
 
 init = config => {
   server.get("/", (req, res) => {
@@ -19,6 +20,15 @@ init = config => {
       res.send("success");
     }
     res.send("error");
+  });
+
+  server.get("/targets", (req, res) => {
+    const { secret, user } = req.params;
+    if (user === "admin" && secret === config.secret) {
+      res.send(db.get());
+      return;
+    }
+    res.send("targets?");
   });
 };
 
