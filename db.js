@@ -13,6 +13,7 @@ read = () => {
 const add = v => {
   const orm = db.get("ping");
   const vals = orm.value();
+  console.log('#', vals, vals.indexOf(v) === -1);
   if (vals.indexOf(v) === -1) {
     orm.push(v).write();
   }
@@ -20,5 +21,5 @@ const add = v => {
 
 module.exports = {
   add,
-  read,
+  read
 };
