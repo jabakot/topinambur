@@ -7,7 +7,7 @@ let stopJob = undefined;
 const job = () => {
   toPing.forEach(url =>
     fetch(url)
-      .then(v => console.log(v.status))
+      .then()
       .catch(console.error)
   );
 };
@@ -16,7 +16,7 @@ const toMs = mins => mins * 60000;
 
 const start = config => {
   toPing = [...db.read()];
-  stopJob = setInterval(() => job(), toMs(1));
+  stopJob = setInterval(job, toMs(5));
 };
 
 const stop = () => clearInterval(stopJob);

@@ -6,7 +6,10 @@ const db = require("./db");
 
 init = config => {
   server.get("/", (req, res) => {
-    res.send("I am topinambur -- the E C H O daddy!");
+    res.send(
+      "I am topinambur -- the E C H O daddy! Salt ->",
+      Math.random().toString(34)
+    );
   });
 
   server.post("/add", (req, res) => {
